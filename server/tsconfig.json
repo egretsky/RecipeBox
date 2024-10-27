@@ -9,5 +9,10 @@
       // "noEmitOnError": true /* Disable emitting files if any type checking errors are reported. */
     },
     "include": ["src"],
+    "exclude": [
+    "node_modules",
+    "dist",  // Ensure the dist directory is excluded from input files
+    "../client"  // Exclude client folder to avoid any conflicts
+    ],
     "typeRoots": ["./node_modules/@types", "./src/types"]
 }
