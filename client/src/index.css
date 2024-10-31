@@ -1706,3 +1706,97 @@ form [type='radio'] {
     align-content: center;
   }
 }
+
+
+/* Reset margin, padding, and box-sizing globally */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Full viewport setup for html and body */
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Prevent any scrolling */
+}
+
+/* Centering container */
+.landing-page {
+  position: fixed; /* Fixes it to the viewport */
+  top: 0;
+  left: 0;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  background-image: url('/cooking-2.jpg'); /* Background image path */
+  background-size: cover; /* Ensures full coverage */
+  background-position: center; /* Centers the image */
+  background-attachment: fixed; /* Keeps background fixed */
+}
+
+/* Style the centered overlay */
+.overlay {
+  text-align: center;
+  color: white;
+  background-color: #6D8174;
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+
+
+
+.title {
+  font-size: 2.5em !important;
+  font-weight: bold !important;
+  margin-bottom: 10px !important;
+}
+
+
+.description {
+  font-size: 1.2em !important;
+  margin-bottom: 20px !important;
+}
+
+
+.login-button,
+.create-account-button {
+  display: inline-block !important;
+  width: 100% !important;
+  padding: 12px !important;
+  font-size: 1em !important;
+  font-weight: bold !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  margin-top: 10px !important;
+}
+
+.login-button {
+  background-color: #FFA726 !important; 
+  border: none !important;
+  color: white !important;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #FB8C00 !important;
+}
+
+.create-account-button {
+  background-color: transparent !important;
+  color: white !important;
+  border: 2px solid white !important;
+}
+
+
+.or-text {
+  margin: 15px 0 !important;
+  font-size: 0.9em !important;
+}
