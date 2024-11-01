@@ -18,8 +18,14 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
   },
   "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "dist",  // Ensure the dist directory is excluded from input files
+    "../server"  // Exclude server folder to avoid any conflicts
+    ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
