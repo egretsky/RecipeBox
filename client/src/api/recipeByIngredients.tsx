@@ -1,8 +1,8 @@
-import { Recipe } from '../../../shared/Recipe';
+import { Recipe } from '../interfaces/recipe';
 
 const getRecipesByIngredients = async (ingredients: string[]) => {
   try {
-    const response = await fetch('/ingredient', {
+    const response = await fetch('/api/recipes/getRecipes', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

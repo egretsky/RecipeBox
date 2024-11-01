@@ -1,11 +1,12 @@
 import express from 'express';
 import type { Request, Response } from 'express';
 import { User } from '../../models/index.js';
+import { Recipe } from '../../models/recipe.js'; // Import the Recipe interface
+import { recipeDataByIngre } from '../../services/apiData.js';
 
 const router = express.Router();
 const apiKey = process.env.SPOONACULAR_API_KEY;
-const getByIngrUrl = 'https://api.spoonacular.com/recipes/findByIngredients';
-// const getByIDUrl = 'https://api.spoonacular.com/recipes/';
+const baseUrl = 'https://api.spoonacular.com/recipes/';
 
 router.get('/', async (_req: Request, res: Response) => {
   try {
@@ -18,13 +19,24 @@ router.get('/', async (_req: Request, res: Response) => {
   }
 });
 
-
-router.get('/ingredient', async (req: Request, res: Response) => {
+router.get('/getRecipes', async (req: Request, res: Response) => {
     try {
-        const recipeNum = 3; // Number of recipes to return
-        const { ingredient } = req.body;
-        const data = `${getByIngrUrl}?apiKey=${apiKey}&ingredients=${ingredient}&number=${recipeNum}`;
-      res.json(data);
+        
+        const { ingredients } = req.body;
+
+        const parsedData = await recipeDataByIngre(ingredients);
+
+        // const recipes = parsedData.map((recipe: Recipe) => {
+        //     const { id, title, image, usedIngredients, missedIngredients } = recipe;
+        //     const ingredients = usedIngredients.concat(missedIngredients).map((ingredient: any) => ingredient.name);
+        //     return { id, title, image, ingredients };
+        // });
+
+        const id = parsedData[0].id;
+
+        const stepData = `${baseUrl}641445/analyzedInstructions?apiKey=b8033d5918b94c42b98a52654a7a699b`
+
+        res.json(data);
     } catch (error: any) {
       res.status(500).json({ message: error.message });
     }
