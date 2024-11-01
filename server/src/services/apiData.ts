@@ -33,3 +33,4 @@ const recipeTimeByID = async (id: number) => {
 }
 
 export { recipeDataByIngre };
+export { recipeTimeByID };
