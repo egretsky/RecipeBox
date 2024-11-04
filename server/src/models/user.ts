@@ -8,7 +8,6 @@ interface UserAttributes {
   username: string;
   email: string;
   password: string;
-  recipes?: RecipeModel[];
 }
 
 // Define the optional attributes for creating a new User
@@ -20,7 +19,6 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
   public username!: string;
   public email!: string;
   public password!: string;
-  public recipes!: RecipeModel[];
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -52,11 +50,7 @@ export function UserFactory(sequelize: Sequelize): typeof User {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      recipes: {
-        type: DataTypes.ARRAY(DataTypes.JSONB), // Defines an array of JSON objects
-        allowNull: true,
-      },
+      }
     },
     {
       tableName: 'users',  // Name of the table in PostgreSQL

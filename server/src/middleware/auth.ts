@@ -28,6 +28,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
 
       // Attach the user information to the request object
       req.user = user as JwtPayload;
+      // req.id = user.id;
       return next(); // Call the next middleware function
     });
   } else {

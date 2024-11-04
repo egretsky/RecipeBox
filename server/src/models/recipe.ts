@@ -4,7 +4,16 @@ import { User } from './user';
 
 interface RecipeCreationAttributes extends Optional<Recipe, 'cookingTime' | 'preparationTime' | 'imageUrl'> {}
 
-export class Recipe extends Model<RecipeModel, RecipeCreationAttributes> implements Recipe {
+interface DetailedRecipe extends RecipeModel {
+    calories: number;
+    fat: number;
+    protein: number;
+    carbohydrates: number;
+    sugar: number;
+    sodium: number;
+}
+
+export class Recipe extends Model<DetailedRecipe, RecipeCreationAttributes> implements Recipe {
     public id!: number;
     public title!: string;
     public ingredients!: string[];
@@ -48,6 +57,30 @@ export function RecipeFactory(sequelize: Sequelize): typeof Recipe {
             imageUrl: {
                 type: DataTypes.STRING,
                 allowNull: true,
+            },
+            calories: {
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+            },
+            fat: {
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+            },
+            protein: {
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+            },
+            carbohydrates: {
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+            },
+            sugar: {
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+            },
+            sodium: {
+                type: DataTypes.DECIMAL,
+                allowNull: false,
             },
         },
         {
