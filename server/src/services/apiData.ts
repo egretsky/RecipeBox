@@ -1,5 +1,5 @@
-import { Recipe } from '../models/recipe.js';
-import { RecipeStep } from '../models/recipe';
+import { RecipeModel } from '../models/recipeInterface.js';
+import { RecipeStep } from '../models/recipeInterface.js';
 
 const apiKey = process.env.RECIPE_API_KEY;
 const baseUrl = 'https://api.spoonacular.com/recipes/';
@@ -7,7 +7,7 @@ const recipeNum = 3; // Number of recipes to return
 
 const getRecipesByIngredients = async (ingredients: string) => {
     const recipesData = await recipeDataByIngre(ingredients);
-    const recipeList : Recipe[] = [];
+    const recipeList : RecipeModel[] = [];
     for (const recipe of recipesData) {
         const { id, title, image } = recipe;
         const infoData = await recipeDataByID(id);

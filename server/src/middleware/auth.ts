@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 
 // Define the interface for the JWT payload
 interface JwtPayload {
+  id: number;
   username: string;
 }
 

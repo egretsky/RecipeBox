@@ -1,6 +1,6 @@
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 import bcrypt from 'bcrypt';
-import { Recipe } from './recipe';
+import { RecipeModel } from './recipeInterface';
 
 // Define the attributes for the User model
 interface UserAttributes {
@@ -8,7 +8,7 @@ interface UserAttributes {
   username: string;
   email: string;
   password: string;
-  recipes?: Recipe[];
+  recipes?: RecipeModel[];
 }
 
 // Define the optional attributes for creating a new User
@@ -20,7 +20,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
   public username!: string;
   public email!: string;
   public password!: string;
-  public recipes!: Recipe[];
+  public recipes!: RecipeModel[];
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
