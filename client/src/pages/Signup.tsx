@@ -1,4 +1,5 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Auth from '../utils/auth';  // Import the Auth utility for managing authentication state
 import { signup } from "../api/authAPI";  // Import the login function from the API
@@ -17,6 +18,10 @@ const Signup = () => {
     try {
       const data = await signup(signupData);
       Auth.login(data.token);  // Assume the signup returns a token like login
+      if (Auth.loggedIn()) {
+        const navigate = useNavigate();
+        navigate('/profile');
+      }
     } catch (err) {
       console.error('Failed to signup', err);
     }

@@ -2,7 +2,7 @@ import express from 'express';
 import type { Request, Response } from 'express';
 import { User } from '../../models/index.js';
 // import { Recipe } from '../../models/recipe.js'; // Import the Recipe interface
-import { recipeDataByIngre } from '../../services/apiData.js';
+//import { recipeDataByIngre } from '../../services/apiData.js';
 
 const router = express.Router();
 // const apiKey = process.env.SPOONACULAR_API_KEY;
@@ -19,12 +19,12 @@ router.get('/', async (_req: Request, res: Response) => {
   }
 });
 
-router.get('/getRecipes', async (req: Request, res: Response) => {
-    try {
+//router.get('/getRecipes', async (req: Request, res: Response) => {
+    //try {
         
-        const { ingredients } = req.body;
+        //const { ingredients } = req.body;
 
-        const parsedData = await recipeDataByIngre(ingredients);
+        //const parsedData = await recipeDataByIngre(ingredients);
 
         // const recipes = parsedData.map((recipe: Recipe) => {
         //     const { id, title, image, usedIngredients, missedIngredients } = recipe;
@@ -37,9 +37,9 @@ router.get('/getRecipes', async (req: Request, res: Response) => {
         // const stepData = `${baseUrl}641445/analyzedInstructions?apiKey=b8033d5918b94c42b98a52654a7a699b`
 
         // res.json(data);
-    } catch (error: any) {
-      res.status(500).json({ message: error.message });
-    }
-  });
+  //   } catch (error: any) {
+  //     res.status(500).json({ message: error.message });
+  //   }
+  // });
 
   export { router as recipeRouter };
