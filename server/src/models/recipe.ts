@@ -4,6 +4,7 @@ export interface Recipe {
     ingredients: string[]; // List of ingredients required for the recipe
     instructions: string[]; // Step-by-step instructions for preparing the recipe
     cookingTime: number; // Cooking time in minutes
+    preparationTime: number; // Preparation time in minutes
     imageUrl?: string; // Optional URL for an image of the recipe
 }
 

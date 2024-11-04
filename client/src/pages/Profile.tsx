@@ -10,6 +10,7 @@ const Profile: React.FC = () => {
     ingredients: [],
     instructions: [],
     cookingTime: 0,
+    preparationTime: 0,
     imageUrl: '',
   });  // State to store new recipe details
 
@@ -48,6 +49,7 @@ const Profile: React.FC = () => {
         ingredients: [],
         instructions: [],
         cookingTime: 0,
+        preparationTime: 0,
         imageUrl: '',
       });
     } catch (error) {
