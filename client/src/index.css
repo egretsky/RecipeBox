@@ -1708,7 +1708,7 @@ form [type='radio'] {
 }
 
 
-/* Reset margin, padding, and box-sizing globally */
+
 *,
 *::before,
 *::after {
@@ -1717,30 +1717,30 @@ form [type='radio'] {
   box-sizing: border-box;
 }
 
-/* Full viewport setup for html and body */
+
 html, body {
   height: 100%;
   width: 100%;
-  overflow: hidden; /* Prevent any scrolling */
+  overflow: hidden;
 }
 
-/* Centering container */
+
 .landing-page {
-  position: fixed; /* Fixes it to the viewport */
+  position: fixed; 
   top: 0;
   left: 0;
-  height: 100vh; /* Full viewport height */
-  width: 100vw; /* Full viewport width */
+  height: 100vh; 
+  width: 100vw; 
   display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  background-image: url('/cooking-2.jpg'); /* Background image path */
-  background-size: cover; /* Ensures full coverage */
-  background-position: center; /* Centers the image */
-  background-attachment: fixed; /* Keeps background fixed */
+  align-items: center; 
+  justify-content: center; 
+  background-image: url('/cooking-2.jpg'); 
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed;
 }
 
-/* Style the centered overlay */
+
 .overlay {
   text-align: center;
   color: white;
@@ -1800,3 +1800,62 @@ html, body {
   margin: 15px 0 !important;
   font-size: 0.9em !important;
 }
+
+.navbar {
+  background-color: #f6f3ec;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 24px; 
+  height: 24px;
+  margin-right: 8px;
+}
+
+.app-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6D8174;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  font-size: 1rem;
+  color: #DAA65D; 
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.search-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.ingredient-input input {
+  padding: 8px;
+  margin-right: 8px;
+}
+
+.ingredient-list {
+  margin-top: 10px;
+}
+
+.ingredient-tag {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
