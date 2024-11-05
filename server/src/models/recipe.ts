@@ -1,8 +1,8 @@
-import { DataTypes, Sequelize, Model, Optional, type ForeignKey } from 'sequelize';
+import { DataTypes, Sequelize, Model, Optional, type CreationOptional, type ForeignKey } from 'sequelize';
 import { RecipeModel } from './recipeInterface';
 import { User } from './user';
 
-interface RecipeCreationAttributes extends Optional<Recipe, 'cookingTime' | 'preparationTime' | 'imageUrl'> {}
+interface RecipeCreationAttributes extends Optional<Recipe, 'cookingTime' | 'preparationTime' | 'imageUrl' | 'id'> {}
 
 interface DetailedRecipe extends RecipeModel {
     calories: number;
@@ -14,7 +14,8 @@ interface DetailedRecipe extends RecipeModel {
 }
 
 export class Recipe extends Model<DetailedRecipe, RecipeCreationAttributes> implements Recipe {
-    public id!: number;
+    public id!: CreationOptional<number>;
+    public spoonacularID!: number;
     public title!: string;
     public ingredients!: string[];
     public instructions!: string[];
@@ -32,7 +33,12 @@ export function RecipeFactory(sequelize: Sequelize): typeof Recipe {
         {
             id: {
                 type: DataTypes.INTEGER,
+                autoIncrement: true,
                 primaryKey: true,
+            },
+            spoonacularID: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
             },
             title: {
                 type: DataTypes.STRING,

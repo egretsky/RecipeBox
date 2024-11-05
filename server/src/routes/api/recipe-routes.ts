@@ -10,21 +10,19 @@ const router = express.Router();
 router.get('/', authenticateToken, async (req: Request, res: Response) => {
   const username = req.user?.username;
   try {
-    const userData = await User.findOne({
+    const user = await User.findOne({
       where: { username },
-      include: [
-        {
-          model: Recipe,
-          as: 'userRecipes',
-        },
-      ],
     });
 
-    if (!userData) {
+    if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    return res.json(userData);
+    const userRecipes = await Recipe.findAll({
+      where: { userID: user.id }, // Use the user's ID to filter recipes
+    });
+
+    return res.json(userRecipes);
   } catch (error: any) {
     return res.status(500).json({ message: error.message });
   }
@@ -51,7 +49,7 @@ router.post('/', authenticateToken, async (req: Request, res: Response) => {
     if (!userData) {
       return res.status(404).json({ message: 'User not found' });
     }
-
+    console.log(recipe);
     // Add the recipe to the user's recipes
     await Recipe.create({ ...recipe, userID: userData.id });
 
