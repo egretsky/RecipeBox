@@ -41,18 +41,29 @@ router.get('/searchRecipes', async (req: Request, res: Response) => {
 
 router.post('/', authenticateToken, async (req: Request, res: Response) => {
   const username = req.user?.username;
-  const { recipe } = req.body;
-
+  const recipe = req.body;
+  console.log(`recipe: ${recipe}`);
   try {
     const userData = await User.findOne({ where: { username } });
 
     if (!userData) {
       return res.status(404).json({ message: 'User not found' });
     }
-    console.log(recipe);
-    // Add the recipe to the user's recipes
-    await Recipe.create({ ...recipe, userID: userData.id });
 
+    // Check if the recipe already exists for the user (based on unique spoonacularID)
+    const existingRecipe = await Recipe.findOne({
+      where: {
+        spoonacularID: recipe.spoonacularID,  // Using spoonacularID to find duplicates
+        userID: userData.id,  // Ensure it's the same user
+      },
+    });
+
+    if (existingRecipe) {
+      return res.status(400).json({ message: 'This recipe has already been added.' });
+    }
+
+    await Recipe.create({ ...recipe, userID: userData.id });
+ 
     return res.json(userData);
   } catch (error: any) {
     return res.status(500).json({ message: error.message });

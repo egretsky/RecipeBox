@@ -2,19 +2,10 @@ import { DataTypes, Sequelize, Model, Optional, type CreationOptional, type Fore
 import { RecipeModel } from './recipeInterface';
 import { User } from './user';
 
-interface RecipeCreationAttributes extends Optional<Recipe, 'cookingTime' | 'preparationTime' | 'imageUrl' | 'id'> {}
+interface RecipeCreationAttributes extends Optional<RecipeModel, 'cookingTime' | 'preparationTime' | 'imageUrl' | 'id'> {}
 
-interface DetailedRecipe extends RecipeModel {
-    calories: number;
-    fat: number;
-    protein: number;
-    carbohydrates: number;
-    sugar: number;
-    sodium: number;
-}
-
-export class Recipe extends Model<DetailedRecipe, RecipeCreationAttributes> implements Recipe {
-    public id!: CreationOptional<number>;
+export class Recipe extends Model<RecipeModel, RecipeCreationAttributes> implements Recipe {
+    declare id: CreationOptional<number>;
     public spoonacularID!: number;
     public title!: string;
     public ingredients!: string[];
@@ -23,6 +14,12 @@ export class Recipe extends Model<DetailedRecipe, RecipeCreationAttributes> impl
     public preparationTime?: number;
     public imageUrl?: string;
     public userID!: ForeignKey<User['id']>;
+    public calories!: number;
+    public fat!: number;
+    public protein!: number;
+    public carbohydrates!: number;
+    public sugar!: number;
+    public sodium!: number;
 
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
@@ -65,27 +62,27 @@ export function RecipeFactory(sequelize: Sequelize): typeof Recipe {
                 allowNull: true,
             },
             calories: {
-                type: DataTypes.DECIMAL,
+                type: DataTypes.DECIMAL(10, 2),
                 allowNull: false,
             },
             fat: {
-                type: DataTypes.DECIMAL,
+                type: DataTypes.DECIMAL(10, 2),
                 allowNull: false,
             },
             protein: {
-                type: DataTypes.DECIMAL,
+                type: DataTypes.DECIMAL(10, 2),
                 allowNull: false,
             },
             carbohydrates: {
-                type: DataTypes.DECIMAL,
+                type: DataTypes.DECIMAL(10, 2),
                 allowNull: false,
             },
             sugar: {
-                type: DataTypes.DECIMAL,
+                type: DataTypes.DECIMAL(10, 2),
                 allowNull: false,
             },
             sodium: {
-                type: DataTypes.DECIMAL,
+                type: DataTypes.DECIMAL(10, 2),
                 allowNull: false,
             },
         },
