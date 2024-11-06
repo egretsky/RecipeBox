@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar'; 
-import { getRecipesByIngredients } from '../api/recipeByIngredients'; 
+import { getRecipesByIngredients } from '../api/recipeAPI'; 
 
 const Search: React.FC = () => {
   const [ingredient, setIngredient] = useState<string>('');
