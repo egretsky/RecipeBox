@@ -51,7 +51,7 @@ export const signup = async (req: Request, res: Response) => {
   const secretKey = process.env.JWT_SECRET_KEY || '';
 
   // Generate a JWT token for the newly created user
-  const token = jwt.sign({ username: newUser.username }, secretKey, { expiresIn: '1h' });
+  const token = jwt.sign({ username: newUser.username }, secretKey, { expiresIn: '3h' });
   return res.status(201).json({ token });  // Send the token as a JSON response
 };
 

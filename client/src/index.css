@@ -982,7 +982,7 @@ a:hover {
   border-radius: 0.3rem;
   border: 1px solid transparent;
   outline: none;
-  color: #1a1a1a;
+  color: #505050;
   background-color: #aeaeae;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
@@ -1721,7 +1721,7 @@ form [type='radio'] {
 html, body {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow: auto;
 }
 
 
@@ -1859,3 +1859,285 @@ html, body {
   border-radius: 5px;
 }
 
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f4f2eb; /* Match the color you used for mint-green */
+  padding: 15px 30px; /* Adjust padding as needed */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000; /* Ensure it stays on top */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for separation */
+}
+
+.app-name {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #657a64; /* Adjust as needed */
+}
+
+.nav-link {
+  margin-left: 20px;
+  font-size: 1em;
+  color: #e69a45; /* Adjust as needed */
+  text-decoration: none;
+}
+
+body {
+  margin-top: 80px; /* Adjust this value to add space below the fixed navbar */
+}
+
+
+.search-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.search-container {
+  text-align: center;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.ingredient-input {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.ingredient-input input {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  width: 60%;
+}
+
+.add-button {
+  padding: 10px 20px !important;
+  font-size: 1em !important;
+  font-weight: bold !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  background-color: #FFA726 !important; 
+  border: none !important;
+  color: white !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.add-button:hover {
+  background-color: #FB8C00 !important;
+}
+
+.ingredient-list {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ingredient-tag {
+  background-color: #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+.ingredient-tag:hover {
+  background-color: #666;
+  text-decoration: line-through; /* Adds strikethrough */
+  color: #666; /* Optional: change text color */
+}
+
+.search-button {
+  padding: 10px 30px;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #FFA726; /* Same style as Add button */
+  border: none;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #FB8C00;
+}
+
+/* Centering the entire module */
+.search-page, .home-page, .other-page-classes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px); /* Adjust 80px to the height of your navbar */
+  padding-top: 80px; /* To account for navbar height */
+  box-sizing: border-box;
+}
+
+/* Optional: style adjustments for the module */
+/* Centering the content rectangle */
+.search-container {
+  background-color: #f9f9f9;
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 600px; /* Set a max width for the rectangle */
+  width: 100%;
+  margin: 0 auto; /* Center horizontally */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.background-sandstone {
+  background-color: #DCD1BB;
+}
+
+.background-green {
+  background-color: #6D8174;
+}
+
+.background-orange {
+  background-color: #eab273;
+}
+
+.sandstone {
+  color: #DCD1BB;
+}
+
+.green {
+  color: #6D8174;
+}
+
+.orange {
+  color: #eab273;
+}
+
+.recipe-card {
+  display: flex;
+  background-color: #f9f9f9;
+  padding: 0;
+  min-height: 450px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 600px;
+}
+
+.recipe-image-container {
+  height: 450px;
+}
+
+.gap-40 {
+  gap: 40px;
+}
+
+.recipe-image {
+  object-fit: cover;
+  height: 450px;
+  width: 200px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.recipe-details-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.recipe-tabs {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 5px;
+}
+
+.recipe-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.recipe-details {
+  font-size: 11pt;
+}
+
+.tab-button {
+  flex-grow: 1;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.tab-button.active {
+  border: 2px solid #000;
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  transition: border 0.3s ease;
+}
+
+.tab-button:hover {
+  cursor: pointer;
+  background-color: #ededed;
+  transition: background-color 0.3s ease;
+}
+
+.tab-content {
+  padding: 10px 0;
+}
+
+.image-selection {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.mini-img {
+  height: 50px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.mini-img:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.scrollable-detail {
+  height: 190px;
+  overflow-y: auto;
+}
+
+.save-button {
+  width: 15px;
+  height: 15px;
+  background: none; /* Removes background */
+  border: none; /* Removes border */
+  display: flex; /* Ensures icon is centered */
+  align-items: center; /* Centers content vertically */
+  justify-content: center; /* Centers content horizontally */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+}
+
+.search-button:hover {
+  background-color: red;
+}
