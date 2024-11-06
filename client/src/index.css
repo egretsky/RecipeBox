@@ -1937,7 +1937,7 @@ h2 {
   font-weight: bold !important;
   border-radius: 5px !important;
   cursor: pointer !important;
-  background-color: #FFA726 !important; /* Button color similar to Home */
+  background-color: #FFA726 !important; 
   border: none !important;
   color: white !important;
   transition: background-color 0.3s ease !important;
