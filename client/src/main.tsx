@@ -7,6 +7,7 @@ import ErrorPage from './pages/ErrorPage.tsx';
 import Home from './pages/Home.tsx';
 import Login from './pages/Login.tsx';
 import Signup from './pages/Signup.tsx';
+import Search from './pages/search.tsx';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,11 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <Signup />
-      }, 
+      },
+      {
+        path: '/search', 
+        element: <Search />
+      }
     ]
   }
 ])
@@ -34,3 +39,4 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(<RouterProvider router={router} />);
 }
+
