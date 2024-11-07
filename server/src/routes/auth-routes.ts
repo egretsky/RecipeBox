@@ -47,12 +47,9 @@ export const signup = async (req: Request, res: Response) => {
   // Create a new user in the database
   const newUser = await User.create({username, email, password: hashedPassword });
 
-  // Get the secret key from environment variables
-  const secretKey = process.env.JWT_SECRET_KEY || '';
-
   // Generate a JWT token for the newly created user
-  const token = jwt.sign({ username: newUser.username }, secretKey, { expiresIn: '3h' });
-  return res.status(201).json({ token });  // Send the token as a JSON response
+  // const token = jwt.sign({ username: newUser.username }, secretKey, { expiresIn: '3h' });
+  return res.status(201).json({message:`Signup Successful:${newUser}`});  // Send the token as a JSON response
 };
 
 // Create a new router instance

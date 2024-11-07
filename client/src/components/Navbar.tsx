@@ -33,7 +33,7 @@ const Navbar = () => {
         !loginCheck ? (
           // View when not logged in
           <>
-            <h1>Authentication Review</h1>
+            <h1>Nourish Mate</h1>
             <button className="btn" type='button'>
               <Link to='/login'>Login</Link>
             </button>

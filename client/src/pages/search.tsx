@@ -41,9 +41,9 @@ const Search: React.FC = () => {
     }
   };
 
-  const onSave = async(recipe: SpoonacularRecipe) => {
+  const onSave = (recipe: SpoonacularRecipe) => {
     console.log('Saving recipe:', JSON.stringify(recipe));
-    await saveRecipe(recipe);
+    saveRecipe(recipe);
     alert('Recipe saved!');
   }
 

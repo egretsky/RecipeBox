@@ -7,7 +7,7 @@ import { saveRecipe } from '../api/recipeAPI';
 
 const Profile: React.FC = () => {
   const [recipes, setRecipes] = useState<SpoonacularRecipe[]>([]);  // State to store the list of recipes
-  const [_currentRecipe, setCurrentRecipe] = useState<SpoonacularRecipe>();
+  
 
   const token = auth.getToken();
 
@@ -28,6 +28,7 @@ const Profile: React.FC = () => {
       });
   }, [token]);  // Add token as dependency to refetch if token changes
 
+  const [_currentRecipe, setCurrentRecipe] = useState<SpoonacularRecipe>(recipes[0]);
   const onSave = async(recipe: SpoonacularRecipe) => {
     console.log('Saving recipe:', JSON.stringify(recipe));
     await saveRecipe(recipe);
@@ -43,11 +44,11 @@ const Profile: React.FC = () => {
     <div>
       <h1>User Recipes</h1>
       {recipes.length > 0 ? (
-        <div className='recipe-list'>
-          {recipes.map((recipe) => (
-            <RecipeCard recipe = {recipe} onSave={onSave} selectRecipe={selectRecipe} isProfile={true}/> // Render each recipe's title
-          ))}
-        </div>
+      <div className='recipe-list'>
+        {recipes.map((recipe) => (
+          <RecipeCard recipe = {recipe} onSave={onSave} selectRecipe={selectRecipe} isProfile={true}/> // Render each recipe's title
+        ))}
+      </div>
       ) : (
         <p>No recipes found.</p>
       )}

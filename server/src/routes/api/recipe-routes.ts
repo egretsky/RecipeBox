@@ -40,7 +40,7 @@ router.get('/searchRecipes', async (req: Request, res: Response) => {
 
 router.post('/', authenticateToken, async (req: Request, res: Response) => {
   const username = req.user?.username;
-  const recipe = req.body;
+  const { recipe } = req.body;
 
   try {
     const userData = await User.findOne({ where: { username } });
@@ -48,7 +48,6 @@ router.post('/', authenticateToken, async (req: Request, res: Response) => {
     if (!userData) {
       return res.status(404).json({ message: 'User not found' });
     }
-
     // Check if the recipe already exists for the user (based on unique spoonacularID)
     const existingRecipe = await Recipe.findOne({
       where: {
