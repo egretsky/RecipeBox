@@ -26,6 +26,12 @@ const Navbar = () => {
     checkLogin();  // Call checkLogin() function to update loginCheck state
   }, []);
 
+  const homeButton = () => {
+    console.log(loginCheck);
+    !loginCheck ? navigate('/') :
+    navigate('/profile');
+  }
+
   return (
     <div className="navbar display-flex justify-space-between align-center py-2 px-5 mint-green">
       {
@@ -33,7 +39,10 @@ const Navbar = () => {
         !loginCheck ? (
           // View when not logged in
           <>
-            <h1>Nourish Mate</h1>
+            <div onClick={homeButton}
+              style={{ cursor: 'pointer' }}>
+              <span className="app-name">Nourish Mate</span>
+            </div>
             <button className="btn" type='button'>
               <Link to='/login'>Login</Link>
             </button>
@@ -42,8 +51,7 @@ const Navbar = () => {
         ) : (
         
           <>
-            <div className="navbar-left">
-              {/* <img src="/path-to-logo-icon.svg" alt="Logo" className="logo-icon" /> {'/icon.png'} */}
+            <div className="navbar-left" onClick={homeButton} style={{ cursor: 'pointer' }}>
               <span className="app-name">Nourish Mate</span>
             </div>
             <div className="navbar-right align-center">

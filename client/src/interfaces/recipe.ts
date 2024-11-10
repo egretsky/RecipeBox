@@ -9,7 +9,7 @@ export interface Recipe {
 }
 
 export interface SpoonacularRecipe {
-    id?: number; // Unique identifier for the recipe
+    id: number; // Unique identifier for the recipe
     spoonacularID?: number; // Unique identifier from the Spoonacular API
     title: string; // Title of the recipe
     ingredients: string[]; // List of ingredients required for the recipe

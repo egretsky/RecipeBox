@@ -3,13 +3,13 @@ import { SpoonacularRecipe } from '../interfaces/recipe';  // Import the Recipe 
 
 interface RecipeCardProps {
   recipe: SpoonacularRecipe;
-  // onClose: () => void;
+  onClose: (id: number) => void;
   onSave: (recipe: SpoonacularRecipe) => void;
   selectRecipe: (index: number) => void;
   isProfile?: boolean;
 }
 
-const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onSave, selectRecipe, isProfile }) => {
+const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onSave, selectRecipe, onClose, isProfile }) => {
   const [activeTab, setActiveTab] = useState<string>('ingredients');  // State to manage the active tab
 
   const getLocalImg = () => {
@@ -31,6 +31,12 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onSave, selectRecipe, i
         <img src={recipe.imageUrl} alt={recipe.title} className="recipe-image" />
       </div>
       <div className="recipe-details-container">
+        {isProfile ? 
+        <div className='card-delete-button' onClick={() => onClose(recipe.id)}>
+          <span>X</span>
+        </div>
+         : 
+         null}
         <div className="recipe-title">
           <h3>{recipe.title}</h3>
           <button onClick={() => onSave(recipe)} className="save-button">&#9825;</button>  {/* Outline heart for save */}
@@ -63,7 +69,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onSave, selectRecipe, i
           )}
           {activeTab === 'instructions' && (
             <div className='scrollable-detail'>
-              {recipe.ingredients.map((ingredient, index) => (<ul>{index+1}: {ingredient}</ul>))}
+              {recipe.instructions.map((step, index) => (<ul>{index+1}: {step}</ul>))}
             </div>
           )}
           {activeTab === 'nutrition' && (
