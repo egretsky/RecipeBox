@@ -8,6 +8,12 @@ export interface RecipeModel {
     preparationTime: number; // Preparation time in minutes
     imageUrl?: string; // Optional URL for an image of the recipe
     userID?: number; // Foreign key to associate the recipe with a user
+    calories?: number;
+    fat?: number;
+    protein?: number;
+    carbohydrates?: number;
+    sugar?: number;
+    sodium?: number;
 }
 
 export interface RecipeStep {

@@ -8,6 +8,8 @@ import Home from './pages/Home.tsx';
 import Login from './pages/Login.tsx';
 import Signup from './pages/Signup.tsx';
 import Search from './pages/search.tsx';
+import Profile from './pages/Profile.tsx';
+import AddRecipe from './pages/AddRecipe.tsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: '/search', 
         element: <Search />
+      },
+      {
+        path: '/profile',
+        element: <Profile />
+      },
+      {
+        path: '/add-recipe',
+        element: <AddRecipe />
       }
     ]
   }

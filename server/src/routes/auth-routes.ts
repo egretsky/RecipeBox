@@ -42,16 +42,14 @@ export const signup = async (req: Request, res: Response) => {
   }
 
   // Hash the password before storing it
-  const hashedPassword = await bcrypt.hash(password, 10);
+  // const hashedPassword = await bcrypt.hash(password, 10);
 
   // Create a new user in the database
-  const newUser = await User.create({username, email, password: hashedPassword });
-
-  // Get the secret key from environment variables
-  const secretKey = process.env.JWT_SECRET_KEY || '';
+  const newUser = await User.create({username, email, password });
 
   // Generate a JWT token for the newly created user
-  const token = jwt.sign({ username: newUser.username }, secretKey, { expiresIn: '1h' });
+  const secretKey = process.env.JWT_SECRET_KEY || '';
+  const token = jwt.sign({ username: newUser.username }, secretKey, { expiresIn: '3h' });
   return res.status(201).json({ token });  // Send the token as a JSON response
 };
 

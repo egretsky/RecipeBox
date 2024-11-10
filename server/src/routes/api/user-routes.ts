@@ -1,6 +1,7 @@
 import express from 'express';
 import type { Request, Response } from 'express';
 import { User } from '../../models/index.js';
+import { authenticateToken } from '../../middleware/auth.js';
 
 const router = express.Router();
 
@@ -17,7 +18,7 @@ router.get('/', async (_req: Request, res: Response) => {
 });
 
 // GET /users/:id - Get a user by id
-router.get('/:id', async (req: Request, res: Response) => {
+router.get('/:id', authenticateToken, async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const user = await User.findByPk(id, {
