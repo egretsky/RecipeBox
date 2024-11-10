@@ -3,7 +3,7 @@ import axios from 'axios';
 import { SpoonacularRecipe } from "../interfaces/recipe";  // Import the interface for Recipe
 import auth from '../utils/auth';
 import RecipeCard from '../components/RecipeCard';
-import { saveRecipe } from '../api/recipeAPI';
+import { deleteRecipe, saveRecipe } from '../api/recipeAPI';
 
 const Profile: React.FC = () => {
   const [recipes, setRecipes] = useState<SpoonacularRecipe[]>([]);  // State to store the list of recipes
@@ -30,7 +30,6 @@ const Profile: React.FC = () => {
 
   const [_currentRecipe, setCurrentRecipe] = useState<SpoonacularRecipe>(recipes[0]);
   const onSave = async(recipe: SpoonacularRecipe) => {
-    console.log('Saving recipe:', JSON.stringify(recipe));
     await saveRecipe(recipe);
     alert('Recipe saved!');
   }
@@ -40,13 +39,22 @@ const Profile: React.FC = () => {
     setCurrentRecipe(localRecipes[index]);
   }
 
+  const onClose = async (id: number) => {
+    try{
+      await deleteRecipe(id);
+      setRecipes(recipes.filter(recipe => recipe.id !== id));
+    } catch (error) {
+      console.error('Error Deleting:', error);
+    }
+  }
+
   return (
     <div>
       <h1>User Recipes</h1>
       {recipes.length > 0 ? (
       <div className='recipe-list'>
         {recipes.map((recipe) => (
-          <RecipeCard recipe = {recipe} onSave={onSave} selectRecipe={selectRecipe} isProfile={true}/> // Render each recipe's title
+          <RecipeCard recipe = {recipe} onSave={onSave} selectRecipe={selectRecipe} onClose={onClose} isProfile={true}/> // Render each recipe's title
         ))}
       </div>
       ) : (

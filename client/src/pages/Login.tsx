@@ -19,7 +19,7 @@ const Login = () => {
     if (Auth.loggedIn()) {  // If user is logged in (you'll need to implement Auth.loggedIn)
       navigate('/profile');  // Redirect to profile page
     }
-  }, [navigate]);
+  }, []);
 
   // Handle changes in the input fields
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {

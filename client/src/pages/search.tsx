@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getRecipesByIngredients, saveRecipe } from '../api/recipeAPI';
+import { getRecipesByIngredients, saveRecipe, deleteRecipe } from '../api/recipeAPI';
 import RecipeCard from '../components/RecipeCard';
 import { SpoonacularRecipe } from '../interfaces/recipe';
 
@@ -52,6 +52,15 @@ const Search: React.FC = () => {
     setCurrentRecipe(localRecipes[index]);
   }
 
+  const onClose = async (id: number) => {
+    try{
+      await deleteRecipe(id);
+      // setRecipes(recipes.filter(recipe => recipe.id !== id));
+    } catch (error) {
+      console.error('Error Deleting:', error);
+    }
+  }
+
   return (
     <div className='display-flex flex-column gap-40'>
       <div className="search-container">
@@ -77,7 +86,7 @@ const Search: React.FC = () => {
         <button className="btn" onClick={searchRecipes}>Search Recipes</button>
       </div>
       <div className='display-flex justify-center'>
-        {currentRecipe ? <RecipeCard recipe = {currentRecipe} onSave={onSave} selectRecipe={selectRecipe} isProfile={false}/> : <div>No recipe selected</div>}
+        {currentRecipe ? <RecipeCard recipe = {currentRecipe} onClose={onClose} onSave={onSave} selectRecipe={selectRecipe} isProfile={false}/> : <div>No recipe selected</div>}
       </div>
     </div>
   );

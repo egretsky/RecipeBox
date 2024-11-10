@@ -38,15 +38,15 @@ export function RecipeFactory(sequelize: Sequelize): typeof Recipe {
                 allowNull: false,
             },
             title: {
-                type: DataTypes.STRING,
+                type: DataTypes.TEXT,
                 allowNull: false,
             },
             ingredients: {
-                type: DataTypes.ARRAY(DataTypes.STRING),
+                type: DataTypes.ARRAY(DataTypes.TEXT),
                 allowNull: false,
             },
             instructions: {
-                type: DataTypes.ARRAY(DataTypes.STRING),
+                type: DataTypes.ARRAY(DataTypes.TEXT),
                 allowNull: false,
             },
             cookingTime: {
@@ -58,7 +58,7 @@ export function RecipeFactory(sequelize: Sequelize): typeof Recipe {
                 allowNull: true,
             },
             imageUrl: {
-                type: DataTypes.STRING,
+                type: DataTypes.TEXT,
                 allowNull: true,
             },
             calories: {
